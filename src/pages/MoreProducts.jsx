@@ -1,12 +1,11 @@
-// src/pages/MoreProducts.jsx
 import React, { useContext, useState } from "react";
 import { CoffeeContext } from "../context/coffeeContext";
 import { Link } from "react-router-dom";
-import "../assets/css/home.css";
+import "../assets/css/productD.css";
 import { Images } from "../constant";
 
 export const MoreProducts = () => {
-  const { coffeeData, loading } = useContext(CoffeeContext);
+  const { coffeeData } = useContext(CoffeeContext);
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredProducts = coffeeData.slice(1).filter(product =>
@@ -27,38 +26,36 @@ export const MoreProducts = () => {
               <div className="hidden md:flex space-x-8">
                 <Link to="/" className="text-[#948e8e] text-md font-medium home">Home</Link>
                 <Link to="/" className="text-[#948e8e] text-md font-medium">Product</Link>
-                <Link to="/" className="text-[#948e8e] text-md font-medium">Contact</Link>
+                <a href="#contact" className="text-[#948e8e] text-md font-medium">Contact</a>
               </div>
             </div>
           </div>
         </nav>
-        <img src={Images.landigPage} className="h-[90vh] mx-auto" alt="" />
       </header>
 
-      <section className="bg-[#251d1d]">
-        <h2 className="text-center font-bold pt-10 text-[#948e8e] font-serif text-3xl">All Products</h2>
-        <div className="text-center mt-6 mb-4">
+      <section className="bg-[#251d1d] pb-28 h-[450vh]">
+        <h2 className="text-center font-bold pt-10 text-[#948e8e] font-serif text-3xl">Our Products</h2>
+        <div className="text-center mt-6 mb-6">
           <input
             type="text"
             placeholder="Search products..."
-            className="py-2 px-4 rounded-full border-2 border-[#f3e7d9] focus:outline-none focus:border-black bg-transparent"
+            className="p-2 rounded-md bg-[#f3e7d9] text-black"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product, index) => (
-              <div key={index} className="p-4 bg-[#f3e7d9] rounded-xl ms-5 me-5 pb-10 shadow-md">
-                <h3 className="text-xl font-semibold ps-6 font-serif"><i>{product.name}</i></h3>
-                <img src={product.image_url} alt={product.name} className="w-full h-auto" />
-                <p>{product.description}</p>
-                <p className="text-lg font-bold">${product.price}</p>
-              </div>
-            ))
-          ) : (
-            <p className="text-center text-[#948e8e]">No products found.</p>
-          )}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 mx-auto max-w-7xl">
+          {filteredProducts.map((product, index) => (
+            <div 
+              key={index} 
+              className="p-4 bg-[#f3e7d9] rounded-xl shadow-md transition-transform transform hover:scale-105 hover:shadow-lg flex flex-col items-center justify-between text-center"
+            >
+              <h3 className="text-xl font-semibold font-serif"><i>{product.name}</i></h3>
+              <img src={product.image_url} alt={product.name} className="w-full h-48 object-cover" />
+              <p className="mt-4">{product.description}</p>
+              <p className="text-lg font-bold pt-3">${product.price}</p>
+            </div>
+          ))}
         </div>
         <div className="text-center mt-6">
           <Link to="/">
@@ -68,6 +65,8 @@ export const MoreProducts = () => {
           </Link>
         </div>
       </section>
+
+     
     </>
   );
 };
