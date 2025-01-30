@@ -24,7 +24,7 @@ export const Home = () => {
                 },
             );
     };
-
+    
     const { coffeeData } = useContext(CoffeeContext); 
     const productsToShow = coffeeData.slice(1, 4);
 
