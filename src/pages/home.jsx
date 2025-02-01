@@ -9,7 +9,7 @@ import ProductCard from '../components/ProductCard';
 import Cart from '../components/Cart';
 import ContactForm from '../components/ContactForm';
 
-
+ 
 export const Home = () => {
   const [cartItems, setCartItems] = useState([]);
   const [showContactForm, setShowContactForm] = useState(false);
