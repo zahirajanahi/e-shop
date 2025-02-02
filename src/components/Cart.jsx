@@ -1,6 +1,5 @@
 import React from 'react';
 import { ShoppingCart, Trash2 } from 'lucide-react';
-import { Images } from '../constant';
 
 const Cart = ({ items, onRemoveFromCart, onUpdateQuantity, onCheckout }) => {
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -23,9 +22,9 @@ const Cart = ({ items, onRemoveFromCart, onUpdateQuantity, onCheckout }) => {
         {items.map((item) => (
           <div key={item.id} className="flex items-center justify-between border-b pb-4">
             <div className="flex items-center gap-4">
-              <img src={Images[item.img]} alt={item.name} className="w-16 h-16 object-cover rounded" />
+              <img src={item.image_url} alt={item.title} className="w-16 h-16 object-cover rounded" />
               <div>
-                <h3 className="font-medium">{item.name}</h3>
+                <h3 className="font-medium">{item.title}</h3>
                 <p className="text-gray-600">${item.price}</p>
               </div>
             </div>
@@ -62,4 +61,5 @@ const Cart = ({ items, onRemoveFromCart, onUpdateQuantity, onCheckout }) => {
     </div>
   );
 };
-export default Cart; 
+
+export default Cart;

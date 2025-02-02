@@ -1,17 +1,16 @@
 import React from 'react';
 import { Plus } from 'lucide-react';
-import { Images } from '../constant';
 
 const ProductCard = ({ product, onAddToCart }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <img 
-        src={Images[product.img]} 
-        alt={product.name} 
+        src={product.image_url}
+        alt={product.title}
         className="w-full h-48 object-cover"
       />
       <div className="p-4">
-        <h3 className="text-lg font-semibold">{product.name}</h3>
+        <h3 className="text-lg font-semibold">{product.title}</h3>
         <p className="text-gray-600 text-sm mt-1">{product.description}</p>
         <div className="mt-4 flex items-center justify-between">
           <span className="text-xl font-bold">${product.price}</span>
@@ -27,4 +26,5 @@ const ProductCard = ({ product, onAddToCart }) => {
     </div>
   );
 };
+
 export default ProductCard;

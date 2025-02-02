@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { Send } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { Images } from '../constant';
 
 const ContactForm = ({ cartItems, onClose }) => {
   const form = useRef(null);
@@ -15,33 +14,49 @@ const ContactForm = ({ cartItems, onClose }) => {
     setIsSubmitting(true);
     
     try {
-      // Format cart items for email with images
+      // Format cart items for email with HTML for images
       const itemsList = cartItems
-        .map(item => {
-          const imagePath = Images[item.img];
-          return ` Product: ${item.name}
-                   Quantity: ${item.quantity}
-                   Price: $${(item.price * item.quantity).toFixed(2)}
-                   Image: ${imagePath} `;
-        });
+        .map(item => `
+          <div style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+            <img src="${item.image_url}" alt="${item.title}" style="width: 100px; height: 100px; object-fit: cover; margin-bottom: 10px;" />
+            <p style="margin: 5px 0;">Product: ${item.title}</p>
+            <p style="margin: 5px 0;">Quantity: ${item.quantity}</p>
+            <p style="margin: 5px 0;">Price: $${(item.price * item.quantity).toFixed(2)}</p>
+          </div>
+        `).join('');
       
       const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
       
+      // Create HTML email template
+      const emailContent = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333;">Order Details</h2>
+          <div style="margin: 20px 0;">
+            ${itemsList}
+          </div>
+          <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #eee;">
+            <h3 style="color: #333;">Total: $${total.toFixed(2)}</h3>
+          </div>
+          <div style="margin-top: 20px;">
+            <p style="margin: 5px 0;"><strong>Customer Message:</strong></p>
+            <p style="margin: 5px 0;">${form.current.message.value}</p>
+          </div>
+        </div>
+      `;
+
       // Create template parameters
       const templateParams = {
         user_name: form.current.user_name.value,
         user_email: form.current.user_email.value,
         message: form.current.message.value,
-        cart_items: itemsList,
-        total_amount: total.toFixed(2),
-        order_details: `Order Details:\\n${itemsList}\\n\\nTotal: $${total.toFixed(2)}`
+        html_content: emailContent,
       };
 
       await emailjs.send(
-        'service_285k4k7', // Replace with your EmailJS service ID
-        'template_htabt4j', // Replace with your EmailJS template ID
+        'service_285k4k7',
+        'template_htabt4j',
         templateParams,
-        'FyhT020zdNVAzrJ4D' // Replace with your EmailJS public key
+        'FyhT020zdNVAzrJ4D'
       );
 
       toast.success('Message sent successfully!');
@@ -112,4 +127,4 @@ const ContactForm = ({ cartItems, onClose }) => {
   );
 };
 
-export default ContactForm;
+export default ContactForm; 
