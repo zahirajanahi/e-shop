@@ -25,7 +25,7 @@ const Cart = ({ items, onRemoveFromCart, onUpdateQuantity, onCheckout }) => {
               <img src={item.image_url} alt={item.title} className="w-16 h-16 object-cover rounded" />
               <div>
                 <h3 className="font-medium">{item.title}</h3>
-                <p className="text-gray-600">${item.price}</p>
+                <p className="text-gray-600">{item.price} MAD</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -49,7 +49,7 @@ const Cart = ({ items, onRemoveFromCart, onUpdateQuantity, onCheckout }) => {
       <div className="mt-6">
         <div className="flex justify-between text-lg font-semibold">
           <span>Total:</span>
-          <span>${total.toFixed(2)}</span>
+          <span>{total.toFixed(2)} MAD</span>
         </div>
         <button
           onClick={onCheckout}

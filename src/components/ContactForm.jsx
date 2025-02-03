@@ -21,7 +21,7 @@ const ContactForm = ({ cartItems, onClose }) => {
             <img src="${item.image_url}" alt="${item.title}" style="width: 100px; height: 100px; object-fit: cover; margin-bottom: 10px;" />
             <p style="margin: 5px 0;">Product: ${item.title}</p>
             <p style="margin: 5px 0;">Quantity: ${item.quantity}</p>
-            <p style="margin: 5px 0;">Price: $${(item.price * item.quantity).toFixed(2)}</p>
+            <p style="margin: 5px 0;">Price: ${(item.price * item.quantity).toFixed(2)} MAD</p>
           </div>
         `).join('');
       
@@ -35,7 +35,7 @@ const ContactForm = ({ cartItems, onClose }) => {
             ${itemsList}
           </div>
           <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #eee;">
-            <h3 style="color: #333;">Total: $${total.toFixed(2)}</h3>
+            <h3 style="color: #333;">Total: ${total.toFixed(2)} MAD</h3>
           </div>
           <div style="margin-top: 20px;">
             <p style="margin: 5px 0;"><strong>Customer Message:</strong></p>

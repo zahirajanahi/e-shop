@@ -4,11 +4,13 @@ import { supabase } from '../lib/supabase';
 import ProductCard from '../components/ProductCard';
 import Cart from '../components/Cart';
 import ContactForm from '../components/ContactForm';
+import Navbar from '../components/navbar';
+import { useCart } from '../contexts/CartContext';
 
-export const Home = () => {
+export const Shop = () => {
   const [products, setProducts] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
   const [showContactForm, setShowContactForm] = useState(false);
+  const { cartItems, removeFromCart, updateQuantity, addToCart } = useCart();
 
   useEffect(() => {
     fetchProducts();
@@ -28,52 +30,20 @@ export const Home = () => {
     }
   };
 
-  const handleAddToCart = (product) => {
-    setCartItems(prevItems => {
-      const existingItem = prevItems.find(item => item.id === product.id);
-      if (existingItem) {
-        return prevItems.map(item =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      }
-      return [...prevItems, { ...product, quantity: 1 }];
-    });
-  };
-
-  const handleRemoveFromCart = (id) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== id));
-  };
-
-  const handleUpdateQuantity = (id, quantity) => {
-    if (quantity < 1) return;
-    setCartItems(prevItems =>
-      prevItems.map(item =>
-        item.id === id ? { ...item, quantity } : item
-      )
-    );
-  };
-
   return (
     <div className="min-h-screen bg-gray-100">
       <Toaster position="top-right" />
-      
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-gray-900">Our Store</h1>
-        </div>
-      </header>
+      <Navbar cartItems={cartItems} />
 
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main className="max-w-7xl mx-auto px-4 py-8 pt-28">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="md:col-span-2">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {products.map(product => (
+              {products.map((product) => (
                 <ProductCard
                   key={product.id}
                   product={product}
-                  onAddToCart={handleAddToCart}
+                  onAddToCart={addToCart}
                 />
               ))}
             </div>
@@ -82,8 +52,8 @@ export const Home = () => {
           <div>
             <Cart
               items={cartItems}
-              onRemoveFromCart={handleRemoveFromCart}
-              onUpdateQuantity={handleUpdateQuantity}
+              onRemoveFromCart={removeFromCart}
+              onUpdateQuantity={updateQuantity}
               onCheckout={() => setShowContactForm(true)}
             />
           </div>
@@ -100,4 +70,4 @@ export const Home = () => {
   );
 };
 
-export default Home;
+export default Shop;
