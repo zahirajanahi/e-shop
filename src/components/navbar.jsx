@@ -110,8 +110,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-             <img src={Images.lik} alt="" className='h-10' />
-          </div>
+  <img src={Images.logo} alt="" className="h-10 hidden sm:block" />
+</div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">

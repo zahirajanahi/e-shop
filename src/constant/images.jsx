@@ -1,5 +1,6 @@
 
 export default {
+    logo :  require('../assets/img/logo (2).png'),
     landing :  require('../assets/img/HeroSectionImg.png'),
     landing2:  require('../assets/img/COMPANION.jpg'),
     login1:require('../assets/img/login1.png'),
