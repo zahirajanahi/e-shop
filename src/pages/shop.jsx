@@ -184,9 +184,9 @@ export const Shop = () => {
           >
             <h1 className="text-5xl font-bold mb-4">KAWS Collection</h1>
             <p className="text-xl text-gray-300 ps-8">
-              Discover our exclusive selection of 
-              <span className='bg-[#FFC23C] px-2 py-1 font-semibold rounded-xl text-black ms-1 me-1'>KAWS</span> 
-              figures
+              Discover our exclusive selection of <span className='font-bold text-[#FFC23C]'>KAWS</span>    figures
+
+              {/* <span className='bg-[#FFC23C] px-2 py-1 font-semibold rounded-xl text-black ms-1 me-1'>KAWS</span>  */}
             </p>
           </motion.div>
         </div>
