@@ -53,7 +53,7 @@ const Landing = () => {
 
     const handleScrollToCollections = () => {
         if (gridSectionRef.current) {
-            gridSectionRef.current.scrollIntoView({ behavior: "smooth" });
+            gridSectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     };
 
