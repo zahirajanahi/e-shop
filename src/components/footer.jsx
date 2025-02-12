@@ -16,13 +16,13 @@ const Footer = () => {
 
         {/* Middle Section - Navigation Links */}
         <div className="flex space-x-8 text-sm text-gray-400">
+        <Link to="/" className="hover:text-[#FFC23C] transition">Home</Link>
           <Link to="/shop" className="hover:text-[#FFC23C] transition">Shop</Link>
-          <Link to="/about" className="hover:text-[#FFC23C] transition">About</Link>
-          <Link to="/contact" className="hover:text-[#FFC23C] transition">Contact</Link>
+          <Link to="/faqs" className="hover:text-[#FFC23C] transition">FaQs</Link>
         </div>
 
         {/* Right Section - Social Media Icons */}
-        <div className="flex space-x-6">
+        <div className="flex space-x-6 pt-5">
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
             <Facebook className="text-white hover:text-[#FFC23C] transition" size={20} />
           </a>
