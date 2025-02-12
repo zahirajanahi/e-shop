@@ -2,7 +2,7 @@
 export default {
     logo :  require('../assets/img/logo (2).png'),
     landing :  require('../assets/img/HeroSectionImg.png'),
-    landing2:  require('../assets/img/COMPANION (2).jpg'),
+    landing2:  require('../assets/img/lning.jpg'),
     login1:require('../assets/img/login1.png'),
     img1:require('../assets/img/21f51115494861.56292008906f9-removebg-preview (1).png'),
     img2:require('../assets/img/hover-removebg-preview.png'),
