@@ -193,23 +193,23 @@ export const Shop = () => {
 
         <main className="max-w-7xl mx-auto px-4 py-8">
           {/* Search and Filter Controls */}
-          <div className="mb-8 flex  gap-4 items-center justify-between">
+          <div className="mb-8 flex  items-center justify-between ">
             <div className="relative flex-1 min-w-[300px]">
               <input
                 type="text"
                 placeholder="Search products..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-[40vw] ms-10 px-4 py-2 pl-10 bg-zinc-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFC23C]"
+                className="w-[40vw]  md:ms-10 px-4 py-2 pl-10 bg-zinc-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFC23C]"
               />
-              <Search className="absolute ms-10 left-3 top-2.5 text-gray-400" size={20} />
+              <Search className="absolute md:ms-10 left-3 top-2.5 text-gray-400" size={20} />
             </div>
             
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsFilterOpen(!isFilterOpen)}
-              className="me-10 px-4 py-2 bg-zinc-800 text-white rounded-lg flex items-center gap-2 hover:bg-zinc-700"
+              className="md:me-10  me-10 px-4 py-2 bg-zinc-800 text-white rounded-lg flex items-center gap-2 hover:bg-zinc-700"
             >
               <SlidersHorizontal size={20} />
               Filters

@@ -15,11 +15,10 @@ const ProductCard = ({ product, onAddToCart }) => {
   };
 
   return (
-    
     <motion.div
       variants={cardVariants}
-      whileHover={{ y: -10 }}
-      className="bg-zinc-800 rounded-xl overflow-hidden shadow-lg group"
+      whileHover="hover"
+      className="bg-zinc-800 rounded-xl overflow-hidden shadow-lg group relative"
     >
       <div className="relative overflow-hidden">
         <motion.img
@@ -29,10 +28,12 @@ const ProductCard = ({ product, onAddToCart }) => {
           alt={product.name}
           className="w-full h-64 object-cover"
         />
+
+        {/* Button for larger screens (visible on hover) */}
         <motion.div
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
-          className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"
+          className="absolute inset-0 bg-black bg-opacity-40 lg:flex items-center justify-center hidden"
         >
           <motion.button
             whileHover={{ scale: 1.1 }}
@@ -45,7 +46,8 @@ const ProductCard = ({ product, onAddToCart }) => {
           </motion.button>
         </motion.div>
       </div>
-      
+
+      {/* Always visible button on mobile */}
       <div className="p-6">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -63,6 +65,15 @@ const ProductCard = ({ product, onAddToCart }) => {
             </span>
           </div>
         </motion.div>
+
+        {/* Mobile Add to Cart Button (always visible) */}
+        <button
+          onClick={() => onAddToCart(product)}
+          className="lg:hidden mt-4 w-full bg-[#FFC23C] text-black px-6 py-3 rounded-full font-semibold flex items-center justify-center gap-2"
+        >
+          <ShoppingCart size={20} />
+          Add to Cart
+        </button>
       </div>
     </motion.div>
   );
