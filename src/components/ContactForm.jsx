@@ -90,7 +90,7 @@ const ContactForm = ({ cartItems, onClose }) => {
               type="text"
               name="user_name"
               required
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 w-[41vw] block md:w-[14vw] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
 
@@ -100,7 +100,7 @@ const ContactForm = ({ cartItems, onClose }) => {
               type="email"
               name="user_email"
               required
-              className="mt-1 block w-[16vw] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block md:w-[16vw] w-[42vw] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
           </div>
