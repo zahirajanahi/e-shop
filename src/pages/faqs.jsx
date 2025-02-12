@@ -4,6 +4,7 @@ import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import { ChevronDown, ChevronUp, DivideIcon as LucideIcon, ShoppingBag, Truck, MessageCircle, Palette, HelpCircle, Package } from 'lucide-react';
 import { LiaWhatsapp } from "react-icons/lia";
+import CustomCursor from '../components/CustomCursor';
 
 
 
@@ -44,6 +45,8 @@ const FaqPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-zinc-900">
+                         <CustomCursor/>
+
       <Navbar />
       
       {/* WhatsApp Button */}

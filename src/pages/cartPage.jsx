@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/footer';
 import 'lord-icon-element';
 import { X } from 'lucide-react';
+import CustomCursor from '../components/CustomCursor';
+
 
 const CartPage = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
@@ -51,6 +53,8 @@ const CartPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-zinc-900">
+                   <CustomCursor/>
+
       <Navbar cartItems={cartItems} />
       <div className="max-w-3xl mx-auto px-4 py-8 pt-32">
         <motion.h1 

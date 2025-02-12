@@ -3,6 +3,7 @@ import { Menu, X, Mail, ShoppingBag } from 'lucide-react';
 import { Images } from "../constant";
 import { useNavigate } from 'react-router-dom'; 
 import { useCart } from '../contexts/CartContext';
+import CustomCursor from './CustomCursor';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -105,7 +106,10 @@ const Navbar = () => {
   );
 
   return (
+    <>
+
     <div className="w-full px-4 py-4 fixed top-0 left-0 z-50">
+
       <nav className="max-w-6xl mx-auto bg-gradient-to-r from-zinc-500/70 via-zinc-950 backdrop-blur-2xl rounded-full py-2 px-5">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -154,6 +158,7 @@ const Navbar = () => {
         {isCartOpen && <CartDropdown  />}
       </nav>
     </div>
+    </>
   );
 };
 

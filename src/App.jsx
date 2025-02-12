@@ -14,6 +14,8 @@ import FaqPage from './pages/faqs';
 
 function App() {
   return (
+
+    
     <AuthProvider>
       <CartProvider>
         <Router>

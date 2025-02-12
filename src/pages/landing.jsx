@@ -6,7 +6,7 @@ import { ArrowDownRight, ArrowUpRight, MessageCircle } from 'lucide-react';
 import Footer from '../components/footer';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { LiaWhatsapp } from 'react-icons/lia';
-// import CustomCursor from '../components/CustomCursor';
+import CustomCursor from '../components/CustomCursor';
 
 
 
@@ -59,7 +59,7 @@ const Landing = () => {
 
     return (
         <>
-             {/* <CustomCursor/> */}
+             <CustomCursor/>
 
             <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end">
                 <motion.div
@@ -206,9 +206,9 @@ const Landing = () => {
                         viewport={{ once: true }}
                         className='text-xl md:text-[2.10rem] text-[#fff] font-bold flex flex-col mt-20 md:mt-36 mb-5'
                     >
-                        <motion.span variants={textVariant}>KAWS FIGURES ARE MORE THAN JUST</motion.span>
-                        <motion.span variants={textVariant}>TOYS - THEY ARE STUNNING <span className='text-[#FFC23C]'>WORKS</span></motion.span>
-                        <motion.span variants={textVariant}><span className='text-[#FFC23C]'>OF ART</span> THAT TRANSCEND</motion.span>
+                        <motion.span variants={textVariant} className='pb-3'>KAWS FIGURES ARE MORE THAN JUST</motion.span>
+                        <motion.span variants={textVariant} className='pb-3'>TOYS - THEY ARE STUNNING <span className='text-[#FFC23C]'>WORKS</span></motion.span>
+                        <motion.span variants={textVariant} className='pb-3' ><span className='text-[#FFC23C]'>OF ART</span> THAT TRANSCEND</motion.span>
                         <motion.span variants={textVariant}>TRADITIONAL BOUNDARIES.</motion.span>
                     </motion.div>
                 </div>
