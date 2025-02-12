@@ -9,6 +9,7 @@ import { AdminLogin } from './components/AdminLogin';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import AdminDashboard from './pages/AdminDashboard';
 import CartPage from './pages/cartPage';
+import Test from './pages/test';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/" element={<Landing />} />
             <Route path='/cartPage' element={<CartPage />} />
+            <Route path='/test' element={<Test />} />
+
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route
               path="/admin/dashboard"

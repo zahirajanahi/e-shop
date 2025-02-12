@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { Send } from 'lucide-react';
+import { Send, Phone, MapPin } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const ContactForm = ({ cartItems, onClose }) => {
@@ -27,10 +27,17 @@ const ContactForm = ({ cartItems, onClose }) => {
       
       const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
       
-      // Create HTML email template
+      // Create HTML email template with added contact information
       const emailContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333;">Order Details</h2>
+          <div style="margin: 20px 0; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+            <h3 style="color: #333; margin-bottom: 15px;">Contact Information</h3>
+            <p style="margin: 5px 0;"><strong>Name:</strong> ${form.current.user_name.value}</p>
+            <p style="margin: 5px 0;"><strong>Email:</strong> ${form.current.user_email.value}</p>
+            <p style="margin: 5px 0;"><strong>Phone:</strong> ${form.current.user_phone.value}</p>
+            <p style="margin: 5px 0;"><strong>Address:</strong> ${form.current.user_address.value}</p>
+          </div>
           <div style="margin: 20px 0;">
             ${itemsList}
           </div>
@@ -48,6 +55,8 @@ const ContactForm = ({ cartItems, onClose }) => {
       const templateParams = {
         user_name: form.current.user_name.value,
         user_email: form.current.user_email.value,
+        user_phone: form.current.user_phone.value,
+        user_address: form.current.user_address.value,
         message: form.current.message.value,
         html_content: emailContent,
       };
@@ -72,10 +81,11 @@ const ContactForm = ({ cartItems, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-lg p-6 max-w-md w-full">
-        <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
+        <h2 className="text-2xl font-semibold mb-4">Sent Your order </h2>
         <form ref={form} onSubmit={handleSubmit} className="space-y-4">
+          <div className='flex space-x-2'>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Name</label>
+            <label className="block text-sm font-medium text-gray-700">Full Name</label>
             <input
               type="text"
               name="user_name"
@@ -90,17 +100,48 @@ const ContactForm = ({ cartItems, onClose }) => {
               type="email"
               name="user_email"
               required
+              className="mt-1 block w-[16vw] rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            />
+          </div>
+          </div>
+          
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              <span className="flex items-center gap-2">
+                <Phone size={16} /> Phone Number
+              </span>
+            </label>
+            <input
+              type="tel"
+              name="user_phone"
+              required
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Message</label>
+            <label className="block text-sm font-medium text-gray-700">
+              <span className="flex items-center gap-2">
+                <MapPin size={16} /> Delivery Address
+              </span>
+            </label>
             <textarea
-              name="message"
-              rows={4}
+              name="user_address"
+              rows={2}
               required
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder="Street address, City, Postal code"
+            ></textarea>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Message (Optional)</label>
+            <textarea
+              name="message"
+              rows={3}
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder="Any special instructions or notes?"
             ></textarea>
           </div>
 
@@ -108,7 +149,7 @@ const ContactForm = ({ cartItems, onClose }) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 disabled:bg-blue-400"
+              className="flex-1 bg-black text-white py-2 rounded-lg hover:bg-zinc-900 transition-colors flex items-center justify-center gap-2 disabled:bg-zinc-900"
             >
               <Send size={20} />
               {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -127,4 +168,4 @@ const ContactForm = ({ cartItems, onClose }) => {
   );
 };
 
-export default ContactForm; 
+export default ContactForm;

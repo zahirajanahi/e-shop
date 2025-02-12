@@ -38,8 +38,8 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             <a href="/" onClick={() => scrollToSection('hero-section')} className="text-white/80 hover:text-white transition-colors text-sm">Home</a>
             <a href="/shop" onClick={() => scrollToSection('wil')} className="text-white/80 hover:text-white transition-colors text-sm">Shop</a>
-            <a href="#" onClick={() => scrollToSection('about2')} className="text-white/80 hover:text-white transition-colors text-sm">FAQs</a>
-            <a href="#" onClick={() => scrollToSection('about2')} className="text-white/80 hover:text-white transition-colors text-sm">Contact</a>
+            <a href="/" onClick={() => scrollToSection('about2')} className="text-white/80 hover:text-white transition-colors text-sm">FAQs</a>
+            <a href="/cartPage" onClick={() => scrollToSection('about2')} className="text-white/80 hover:text-white transition-colors text-sm">Cart</a>
           </div>
 
           {/* Cart Button & Dropdown */}

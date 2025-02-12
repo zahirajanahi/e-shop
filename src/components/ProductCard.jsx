@@ -1,29 +1,70 @@
 import React from 'react';
-import { Plus } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ShoppingCart } from 'lucide-react';
 
 const ProductCard = ({ product, onAddToCart }) => {
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <img 
-        src={product.image_url}
-        alt={product.title}
-        className="w-full h-48 object-cover"
-      />
-      <div className="p-4">
-        <h3 className="text-lg font-semibold">{product.title}</h3>
-        <p className="text-gray-600 text-sm mt-1">{product.description}</p>
-        <div className="mt-4 flex items-center justify-between">
-          <span className="text-xl font-bold">${product.price}</span>
-          <button
+    
+    <motion.div
+      variants={cardVariants}
+      whileHover={{ y: -10 }}
+      className="bg-zinc-800 rounded-xl overflow-hidden shadow-lg group"
+    >
+      <div className="relative overflow-hidden">
+        <motion.img
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.3 }}
+          src={product.image_url}
+          alt={product.name}
+          className="w-full h-64 object-cover"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"
+        >
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onClick={() => onAddToCart(product)}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-700 transition-colors"
+            className="bg-[#FFC23C] text-black px-6 py-3 rounded-full font-semibold flex items-center gap-2"
           >
-            <Plus size={20} />
+            <ShoppingCart size={20} />
             Add to Cart
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
-    </div>
+      
+      <div className="p-6">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <h3 className="text-xl font-semibold text-white mb-2">{product.name}</h3>
+          <p className="text-gray-400 mb-4">{product.description}</p>
+          <div className="flex items-center justify-between">
+            <span className="text-2xl font-bold text-[#FFC23C]">
+              ${product.price}
+            </span>
+            <span className="text-sm text-gray-400">
+              {product.stock} in stock
+            </span>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 };
 
