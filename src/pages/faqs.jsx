@@ -29,11 +29,7 @@ const faqs  = [
     answer: "Yes! KAWS figures are highly collectible items that often appreciate in value over time. They represent a unique intersection of street art, pop culture, and contemporary art, making them valuable both as art pieces and investments.",
     icon: Package
   },
-  {
-    question: "How do I authenticate my KAWS figure?",
-    answer: "Authentic KAWS figures come with specific markings, including the artist's signature, production date, and edition number. All our products are guaranteed authentic, sourced directly from authorized distributors.",
-    icon: HelpCircle
-  }
+  
 ];
 
 const FaqPage = () => {

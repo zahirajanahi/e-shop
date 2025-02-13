@@ -7,6 +7,7 @@ import Footer from '../components/footer';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { LiaWhatsapp } from 'react-icons/lia';
 import CustomCursor from '../components/CustomCursor';
+import { Youtube } from 'react-feather';
 
 
 
@@ -45,7 +46,7 @@ const Landing = () => {
             }
         }
     };
-
+     
     const textVariant = {
         initial: { opacity: 0, y: 20 },
         animate: { opacity: 1, y: 0 }
@@ -214,7 +215,7 @@ const Landing = () => {
                 </div>
             </motion.div>
 
-
+            
             {/* GRID PICTURES 2 VERSION  */}
  
             <div className='bg-white mt-12 grid-section hidden md:block' ref={gridSectionRef}>
@@ -258,7 +259,7 @@ const Landing = () => {
             <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                src={Images.grid2} 
+                src={Images.grid} 
                 className='w-[6w] h-[80vh]' 
                 alt="" 
             />
@@ -305,7 +306,7 @@ const Landing = () => {
         <motion.img 
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
-            src={Images.grid2} 
+            src={Images.grid} 
             className="w-full md:w-[45vw] h-[50vh] object-cover" 
             alt="" 
         />

@@ -114,15 +114,15 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-  <img src={Images.logo} alt="" className="h-10 hidden sm:block" />
-</div>
+            <a href="/">  <img src={Images.logo} alt="" className="h-10 hidden sm:block" /> </a>
+           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="/" onClick={() => scrollToSection('hero-section')} className="text-white/80 hover:text-white transition-colors text-sm">Home</a>
-            <a href="/shop" onClick={() => scrollToSection('wil')} className="text-white/80 hover:text-white transition-colors text-sm">Shop</a>
-            <a href="/faqs" onClick={() => scrollToSection('about2')} className="text-white/80 hover:text-white transition-colors text-sm">FAQs</a>
-            <a href="/cartPage" onClick={() => scrollToSection('about2')} className="text-white/80 hover:text-white transition-colors text-sm">Cart</a>
+          <div className="hidden md:flex items-center space-x-4">
+            <a href="/"  className="hover:bg-zinc-800 hover:text-[#FFC23C] px-3 py-1 rounded-3xl text-white/80  transition-colors text-sm">Home</a>
+            <a href="/shop"  className="text-white/80 hover:bg-zinc-800 hover:text-[#FFC23C] px-3 py-1 rounded-3xl transition-colors text-sm">Shop</a>
+            <a href="/faqs"  className="text-white/80 hover:bg-zinc-800 hover:text-[#FFC23C] px-3 py-1 rounded-3xl transition-colors text-sm">FAQs</a>
+            <a href="/cartPage"  className="text-white/80 hover:bg-zinc-800 hover:text-[#FFC23C] px-3 py-1 rounded-3xl transition-colors text-sm">Cart</a>
           </div>
 
           {/* Desktop Cart Button & Dropdown */}

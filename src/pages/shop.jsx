@@ -10,7 +10,7 @@ import { MessageCircle, Search, SlidersHorizontal, X } from 'lucide-react';
 import { Images } from "../constant";
 import { LiaWhatsapp } from "react-icons/lia";
 import CustomCursor from '../components/CustomCursor';
-
+import Swal from 'sweetalert2';
 
 
 
@@ -29,6 +29,29 @@ export const Shop = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
+   
+  const handleAddToCart = (product) => {
+    addToCart(product);
+  
+    // Show SweetAlert notification
+    Swal.fire({
+      title: "Added to Cart!",
+      text: `Your product has been added to your cart.`,
+      icon: "success",
+      showConfirmButton: false,
+      timer: 2000,
+      toast: true,
+      position: "top-end",
+      background: "#1f1f1f", 
+      color: "#FFC23C", 
+      iconColor: "#FFC23C", 
+      customClass: {
+        popup: "custom-swal-popup",
+        title: "custom-swal-title",
+        content: "custom-swal-content"
+      }
+    });
+  };
 
   const fetchProducts = async () => {
     try {
@@ -100,7 +123,7 @@ export const Shop = () => {
 
   return (
     <>
-                          <CustomCursor/>
+      <CustomCursor/>
 
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end">
         <motion.div
@@ -293,7 +316,7 @@ export const Shop = () => {
               <ProductCard
                 key={product.id}
                 product={product}
-                onAddToCart={addToCart}
+                onAddToCart={handleAddToCart}
               />
             ))}
           </div>
