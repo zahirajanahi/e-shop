@@ -9,7 +9,7 @@ const Footer = () => {
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent(`Hello! I'm interested in purchasing items from your store. My cart total is ${total.toFixed(2)} MAD.`);
-    window.open(`https://wa.me/+2120774054190?text=${message}`, '_blank');
+    window.open(`https://wa.me/0661715003?text=${message}`, '_blank');
   };
   return (
     <footer className="bg-black text-white py-12 mt-16">

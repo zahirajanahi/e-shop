@@ -68,14 +68,14 @@ export const Shop = () => {
   };
 
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/0774054190', '_blank');
+    window.open('https://wa.me/0661715003', '_blank');
   };
 
   // Add filter handlers
-  const handleFilterChange = (name, value) => {
+  const handleFilterChange = (title, value) => {
     setFilters(prev => ({
       ...prev,
-      [name]: value
+      [title]: value
     }));
   };
 
@@ -92,7 +92,7 @@ export const Shop = () => {
   const filteredProducts = products.filter(product => {
     // Search filter
     const matchesSearch = !searchTerm || 
-      product.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       product.description?.toLowerCase().includes(searchTerm.toLowerCase());
 
     // Price range filter
@@ -277,7 +277,7 @@ export const Shop = () => {
                   </select>
                 </div>
 
-                <div>
+                {/* <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     Category
                   </label>
@@ -287,11 +287,11 @@ export const Shop = () => {
                     className="w-full bg-zinc-700 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFC23C]"
                   >
                     <option value="all">All Categories</option>
-                    <option value="figures">Figures</option>
-                    <option value="paintings">Paintings</option>
-                    <option value="accessories">Accessories</option>
+                    <option value="figures">Kaws</option>
+                    <option value="paintings">BearBrick</option>
+                    <option value="accessories">Tableau</option>
                   </select>
-                </div>
+                </div> */}
 
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">

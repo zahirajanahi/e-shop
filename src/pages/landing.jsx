@@ -8,6 +8,7 @@ import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { LiaWhatsapp } from 'react-icons/lia';
 import CustomCursor from '../components/CustomCursor';
 import { Youtube } from 'react-feather';
+import { Helmet } from "react-helmet";
 
 
 
@@ -30,7 +31,7 @@ const Landing = () => {
     };
 
     const handleWhatsAppClick = () => {
-        window.open('https://wa.me/0774054190', '_blank');
+        window.open('https://wa.me/0661715003', '_blank');
     };
 
     const fadeInUp = {
@@ -61,6 +62,10 @@ const Landing = () => {
     return (
         <>
              <CustomCursor/>
+
+             <Helmet>
+                <link rel="icon" type="image/png" href={Images.logo} sizes="280x280" />
+            </Helmet>
 
             <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end">
                 <motion.div

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { LogOut, Plus, FilePenLine, X } from "lucide-react";
+import { LogOut, Plus, FilePenLine, X, Upload } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import toast from "react-hot-toast";
-
+import { v4 as uuidv4 } from 'uuid';
 export default function AdminDashboard() {
   const { user, signOut } = useAuth();
   const [products, setProducts] = useState([]);
@@ -13,18 +13,18 @@ export default function AdminDashboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const productsPerPage = 5;
-
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     price: "",
     image_url: "",
   });
-
+  const [uploading, setUploading] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState("");
   useEffect(() => {
     fetchProducts();
   }, []);
-
   useEffect(() => {
     // Filter products based on search query
     const filtered = products.filter(product => 
@@ -34,14 +34,12 @@ export default function AdminDashboard() {
     setFilteredProducts(filtered);
     setCurrentPage(1); // Reset to first page when search changes
   }, [searchQuery, products]);
-
   const fetchProducts = async () => {
     try {
       const { data, error } = await supabase
         .from("products")
         .select("*")
         .order("created_at", { ascending: false });
-
       if (error) throw error;
       setProducts(data);
     } catch (error) {
@@ -49,16 +47,44 @@ export default function AdminDashboard() {
       console.error("Error:", error);
     }
   };
-
   // Pagination calculations
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  // ... (keep all the existing handlers: handleInputChange, handleSubmit, handleEdit, handleDelete, handleSignOut, isValidImageUrl)
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageFile(file);
+      // Create a preview URL
+      const objectUrl = URL.createObjectURL(file);
+      setPreviewUrl(objectUrl);
+    }
+  };
+  const uploadImage = async (file) => {
+    try {
+      setUploading(true);
+      
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${uuidv4()}.${fileExt}`;
+      const filePath = `${fileName}`;
+      const { error: uploadError } = await supabase.storage
+        .from('product_images')
+        .upload(filePath, file);
+      if (uploadError) throw uploadError;
+      const { data: { publicUrl } } = supabase.storage
+        .from('product_images')
+        .getPublicUrl(filePath);
+      return publicUrl;
+    } catch (error) {
+      toast.error('Error uploading image');
+      console.error('Error:', error);
+      return null;
+    } finally {
+      setUploading(false);
+    }
+  };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -66,15 +92,15 @@ export default function AdminDashboard() {
       [name]: value,
     }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (!isValidImageUrl(formData.image_url)) {
-        toast.error("Please enter a valid image URL");
-        return;
+      let imageUrl = formData.image_url;
+      if (imageFile) {
+        const uploadedUrl = await uploadImage(imageFile);
+        if (!uploadedUrl) return;
+        imageUrl = uploadedUrl;
       }
-
       if (editingProduct) {
         const { error } = await supabase
           .from("products")
@@ -82,10 +108,9 @@ export default function AdminDashboard() {
             title: formData.title,
             description: formData.description,
             price: parseFloat(formData.price),
-            image_url: formData.image_url,
+            image_url: imageUrl,
           })
           .eq("id", editingProduct.id);
-
         if (error) throw error;
         toast.success("Product updated successfully");
       } else {
@@ -94,17 +119,17 @@ export default function AdminDashboard() {
             title: formData.title,
             description: formData.description,
             price: parseFloat(formData.price),
-            image_url: formData.image_url,
+            image_url: imageUrl,
           },
         ]);
-
         if (error) throw error;
         toast.success("Product created successfully");
       }
-
       setIsModalOpen(false);
       setEditingProduct(null);
       setFormData({ title: "", description: "", price: "", image_url: "" });
+      setImageFile(null);
+      setPreviewUrl("");
       fetchProducts();
     } catch (error) {
       toast.error(
@@ -113,7 +138,6 @@ export default function AdminDashboard() {
       console.error("Error:", error);
     }
   };
-
   const handleEdit = (product) => {
     setEditingProduct(product);
     setFormData({
@@ -124,12 +148,10 @@ export default function AdminDashboard() {
     });
     setIsModalOpen(true);
   };
-
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
         const { error } = await supabase.from("products").delete().eq("id", id);
-
         if (error) throw error;
         toast.success("Product deleted successfully");
         fetchProducts();
@@ -139,7 +161,6 @@ export default function AdminDashboard() {
       }
     }
   };
-
   const handleSignOut = async () => {
     try {
       await signOut();
@@ -149,7 +170,6 @@ export default function AdminDashboard() {
       console.error("Error:", error);
     }
   };
-
   const isValidImageUrl = (url) => {
     if (!url) return false;
     return (
@@ -158,7 +178,6 @@ export default function AdminDashboard() {
       url.startsWith("https://via.placeholder.com")
     );
   };
-
   return (
     <div className="min-h-screen">
       <nav className="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
@@ -199,7 +218,6 @@ export default function AdminDashboard() {
           </div>
         </div>
       </nav>
-
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 pt-20">
         <div className="px-4 py-6 sm:px-0">
           <div className="flex justify-between items-center mb-6">
@@ -223,7 +241,6 @@ export default function AdminDashboard() {
               Add Product
             </button>
           </div>
-
           <div className="overflow-x-auto bg-white shadow-md rounded-md">
             <table className="min-w-full border border-gray-300">
               <thead className="bg-zinc-400/10">
@@ -250,7 +267,7 @@ export default function AdminDashboard() {
                     </td>
                     <td className="px-4 py-2">{product.title}</td>
                     <td className="px-4 py-2">{product.description}</td>
-                    <td className="px-4 py-2 font-medium">${product.price}</td>
+                    <td className="px-4 py-2 font-medium">{product.price} MAD </td>
                     <td className="px-4 py-2">
                       <button 
                         onClick={() => handleEdit(product)}
@@ -270,7 +287,6 @@ export default function AdminDashboard() {
               </tbody>
             </table>
           </div>
-
           {/* Pagination */}
           {totalPages > 1 && (
             <div className="flex justify-center mt-4 gap-2">
@@ -305,10 +321,8 @@ export default function AdminDashboard() {
           )}
         </div>
       </main>
-
-      {/* Modal remains unchanged */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center mt-10 p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center mt-10 p-4 ">
           <div className="bg-white rounded-lg p-6 max-w-md w-full">
             <h2 className="text-2xl font-semibold mb-4">
               {editingProduct ? "Edit Product" : "Add New Product"}
@@ -355,33 +369,59 @@ export default function AdminDashboard() {
                   className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
                 />
               </div>
+              
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Image URL
+                  Product Image
                 </label>
-                <input
-                  type="url"
-                  name="image_url"
-                  value={formData.image_url}
-                  onChange={handleInputChange}
-                  required
-                  placeholder="https://example.com/image.jpg"
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
-                />
-                {formData.image_url && (
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500 mb-2">Preview:</p>
-                    <img
-                      src={formData.image_url}
-                      alt="Preview"
-                      className="h-16 w-16 object-cover rounded"
-                      onError={(e) => {
-                        e.currentTarget.src =
-                          "https://via.placeholder.com/150?text=Invalid+URL";
-                      }}
-                    />
+                <div className="mt-1 flex items-center space-x-4">
+                  <div className="flex-shrink-0">
+                    {(previewUrl || formData.image_url) && (
+                      <img
+                        src={previewUrl || formData.image_url}
+                        alt="Preview"
+                        className="h-24 w-24 object-cover rounded-lg"
+                        onError={(e) => {
+                          e.currentTarget.src =
+                            "https://via.placeholder.com/150?text=Invalid+Image";
+                        }}
+                      />
+                    )}
                   </div>
-                )}
+                  <div className="flex-1">
+                    <div className="relative">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="hidden"
+                        id="image-upload"
+                      />
+                      <label
+                        htmlFor="image-upload"
+                        className="cursor-pointer inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none"
+                      >
+                        <Upload className="h-4 w-4 mr-2" />
+                        {uploading ? "Uploading..." : "Upload Image"}
+                      </label>
+                    </div>
+                    {!imageFile && (
+                      <div className="mt-2">
+                        <p className="text-xs text-gray-500">
+                          Or paste an image URL:
+                        </p>
+                        <input
+                          type="url"
+                          name="image_url"
+                          value={formData.image_url}
+                          onChange={handleInputChange}
+                          placeholder="https://example.com/image.jpg"
+                          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
               <div className="flex justify-end space-x-3 mt-6">
                 <button
@@ -389,6 +429,8 @@ export default function AdminDashboard() {
                   onClick={() => {
                     setIsModalOpen(false);
                     setEditingProduct(null);
+                    setImageFile(null);
+                    setPreviewUrl("");
                   }}
                   className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
                 >
@@ -396,6 +438,7 @@ export default function AdminDashboard() {
                 </button>
                 <button
                   type="submit"
+                  disabled={uploading}
                   className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-blue-400"
                 >
                   {editingProduct ? "Update" : "Create"}
