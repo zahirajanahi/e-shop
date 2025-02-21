@@ -12,6 +12,7 @@ import CartPage from './pages/cartPage';
 import Test from './pages/faqs';
 import FaqPage from './pages/faqs';
 import ShopT from './pages/shopT';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route path="/shop" element={<Shop />} />
             <Route path="/shop-table" element={<ShopT />} />
+            <Route path="/*" element={<NotFound />} />
 
             <Route path="/" element={<Landing />} />
             <Route path='/cartPage' element={<CartPage />} />
