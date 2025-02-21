@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 
 
 
-export const Shop = () => {
+export const ShopT = () => {
   const [products, setProducts] = useState([]);
   const { cartItems, addToCart } = useCart();
   // Add new state for filters
@@ -26,10 +26,10 @@ export const Shop = () => {
     sortBy: 'newest'
   });
 
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+   const [isLoading, setIsLoading] = useState(true);
+   useEffect(() => {
+     fetchProducts();
+   }, []);
    
   const handleAddToCart = (product) => {
     addToCart(product);
@@ -57,22 +57,19 @@ export const Shop = () => {
   const fetchProducts = async () => {
     setIsLoading(true);
     try {
-      // Get all products first
       const { data, error } = await supabase
         .from('products')
         .select('*')
-        .eq('category', 'figure') // Filter for 'figure' category
+        .eq('category', 'tableau')
         .order('created_at', { ascending: false });
-      
       if (error) throw error;
-      setProducts(data || []); // Ensure we always set an array
+      setProducts(data);
     } catch (error) {
       console.error('Error fetching products:', error);
     } finally {
       setIsLoading(false);
     }
   };
-
 
   const handleWhatsAppClick = () => {
     window.open('https://wa.me/0661715003', '_blank');
@@ -347,4 +344,4 @@ export const Shop = () => {
   );
 };
 
-export default Shop;
+export default ShopT;

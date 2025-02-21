@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Mail, ShoppingBag } from 'lucide-react';
+import { Menu, X, Mail, ShoppingBag, ChevronDown } from 'lucide-react';
 import { Images } from "../constant";
 import { useNavigate } from 'react-router-dom'; 
 import { useCart } from '../contexts/CartContext';
@@ -9,6 +9,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isShopOpen, setIsShopOpen] = useState(false);
+
   const navigate = useNavigate();
   const { cartItems } = useCart();
 
@@ -105,6 +107,27 @@ const Navbar = () => {
     </div>
   );
 
+  const ShopDropdown = () => (
+    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-black/90 backdrop-blur-lg rounded-2xl shadow-2xl py-2 px-1 z-50 border border-white/10 min-w-[200px]">
+      <div className="flex flex-col space-y-1">
+        <a 
+          href="/shop" 
+          className="px-4 py-2 text-white/90 hover:text-[#FFC23C] hover:bg-white/5 rounded-xl transition-all duration-200 text-sm font-medium"
+          onClick={() => setIsShopOpen(false)}
+        >
+          K-figures
+        </a>
+        <a 
+          href="/shop-table" 
+          className="px-4 py-2 text-white/90 hover:text-[#FFC23C] hover:bg-white/5 rounded-xl transition-all duration-200 text-sm font-medium"
+          onClick={() => setIsShopOpen(false)}
+        >
+          K-tableau
+        </a>
+      </div>
+    </div>
+  );
+
   return (
     <>
 
@@ -120,8 +143,20 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
             <a href="/"  className="hover:bg-zinc-800 hover:text-[#FFC23C] px-3 py-1 rounded-3xl text-white/80  transition-colors text-sm">Home</a>
-            <a href="/shop"  className="text-white/80 hover:bg-zinc-800 hover:text-[#FFC23C] px-3 py-1 rounded-3xl transition-colors text-sm">Shop</a>
-            <a href="/faqs"  className="text-white/80 hover:bg-zinc-800 hover:text-[#FFC23C] px-3 py-1 rounded-3xl transition-colors text-sm">FAQs</a>
+          {/* Shop Dropdown Trigger */}
+             <div className="relative group">
+              <button 
+                onClick={() => setIsShopOpen(!isShopOpen)}
+                className="nav-link group flex items-center gap-1"
+              >
+                <span className="relative hover:bg-zinc-800 hover:text-[#FFC23C] px-3 py-1 rounded-3xl text-white/80  transition-colors text-sm flex items-center">
+                  Shop
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </span>
+              </button>
+              {isShopOpen && <ShopDropdown />}
+            </div>
+                        <a href="/faqs"  className="text-white/80 hover:bg-zinc-800 hover:text-[#FFC23C] px-3 py-1 rounded-3xl transition-colors text-sm">FAQs</a>
             <a href="/cartPage"  className="text-white/80 hover:bg-zinc-800 hover:text-[#FFC23C] px-3 py-1 rounded-3xl transition-colors text-sm">Cart</a>
           </div>
 
@@ -147,8 +182,11 @@ const Navbar = () => {
           <div className="md:hidden mt-4 bg-gray-900 backdrop-blur-2xl rounded-2xl p-4 absolute left-4 right-4 top-full w-[85vw]">
             <div className="flex flex-col space-y-4">
               <a href="/" className="text-white/80 hover:text-white transition-colors text-sm">Home</a>
-              <a href="/shop" className="text-white/80 hover:text-white transition-colors text-sm">Shop</a>
-              <a href="/cartPage" className="text-white/80 hover:text-white transition-colors text-sm">Cart</a>
+              <div className="space-y-2">
+                <p className="text-white/60 text-sm font-medium">Shop</p>
+                <a href="/shop" className="block pl-4 text-white/90 hover:text-white transition-colors text-sm font-medium">K-figures</a>
+                <a href="/shop-table" className="block pl-4 text-white/90 hover:text-white transition-colors text-sm font-medium">K-tableau</a>
+              </div>                   <a href="/cartPage" className="text-white/80 hover:text-white transition-colors text-sm">Cart</a>
               <a href="/faqs" className="text-white/80 hover:text-white transition-colors text-sm">FAQs</a>
             </div>
           </div>

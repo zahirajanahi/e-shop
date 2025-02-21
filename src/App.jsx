@@ -11,6 +11,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import CartPage from './pages/cartPage';
 import Test from './pages/faqs';
 import FaqPage from './pages/faqs';
+import ShopT from './pages/shopT';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         <Router>
           <Routes>
             <Route path="/shop" element={<Shop />} />
+            <Route path="/shop-table" element={<ShopT />} />
+
             <Route path="/" element={<Landing />} />
             <Route path='/cartPage' element={<CartPage />} />
             <Route path='/faqs' element={<FaqPage />} />
