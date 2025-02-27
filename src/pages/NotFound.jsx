@@ -12,9 +12,11 @@ const NotFound = () => {
       "404 Error: User attempted to access non-existent route:",
       location.pathname
     );
+
   }, [location.pathname]);
 
   return (
+
     <div className="min-h-screen w-full flex flex-col items-center justify-center bg-black text-white relative overflow-hidden p-4">
       {/* Background subtle gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black"></div>

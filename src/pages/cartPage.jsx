@@ -15,10 +15,10 @@ const CartPage = () => {
   const [showContactForm, setShowContactForm] = useState(false);
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent(`Hello! I'm interested in purchasing items from your store. My cart total is ${total.toFixed(2)} MAD.`);
-    window.open(`https://wa.me/+2120774054190?text=${message}`, '_blank');
-  };
+  // const handleWhatsAppClick = () => {
+  //   const message = encodeURIComponent(`Hello! I'm interested in purchasing items from your store. My cart total is ${total.toFixed(2)} MAD.`);
+  //   window.open(`https://wa.me/+2120774054190?text=${message}`, '_blank');
+  // };
 
   if (cartItems.length === 0) {
     return (
@@ -148,7 +148,7 @@ const CartPage = () => {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={handleWhatsAppClick}
+              // onClick={handleWhatsAppClick}
               className="flex items-center gap-2 bg-green-900 text-white py-3 px-5 rounded-lg font-bold text-base hover:bg-green-600 transition-colors shadow-md"
             >
               <Send size={20} className="transform" />

@@ -71,9 +71,9 @@ export const ShopT = () => {
     }
   };
 
-  const handleWhatsAppClick = () => {
-    window.open('https://wa.me/0661715003', '_blank');
-  };
+  // const handleWhatsAppClick = () => {
+  //   window.open('https://wa.me/0661715003', '_blank');
+  // };
 
   // Add filter handlers
   const handleFilterChange = (title, value) => {
@@ -161,7 +161,7 @@ export const ShopT = () => {
             boxShadow: "0 0 25px rgba(255, 194, 60, 0.5)"
           }}
           whileTap={{ scale: 0.95 }}
-          onClick={handleWhatsAppClick}
+          // onClick={handleWhatsAppClick}
           className="bg-[#FFC23C] text-black p-4 rounded-full shadow-lg flex items-center justify-center group"
           aria-label="Contact us on WhatsApp"
         >

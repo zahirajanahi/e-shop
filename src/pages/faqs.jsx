@@ -35,9 +35,9 @@ const faqs  = [
 const FaqPage = () => {
   const [openIndex, setOpenIndex] = useState(null);
   
-  const handleWhatsAppClick = () => {
-    window.open('https://wa.me/0661715003', '_blank');
-  };
+  // const handleWhatsAppClick = () => {
+  //   window.open('https://wa.me/0661715003', '_blank');
+  // };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-zinc-900">
@@ -78,7 +78,7 @@ const FaqPage = () => {
             boxShadow: "0 0 25px rgba(255, 194, 60, 0.5)"
           }}
           whileTap={{ scale: 0.95 }}
-          onClick={handleWhatsAppClick}
+          // onClick={handleWhatsAppClick}
           className="bg-[#FFC23C] text-black p-4 rounded-full shadow-lg flex items-center justify-center group"
         >
           <motion.div
@@ -170,7 +170,7 @@ const FaqPage = () => {
           <p className="text-gray-400">
             Still have questions? Feel free to{" "}
             <button
-              onClick={handleWhatsAppClick}
+              // onClick={handleWhatsAppClick}
               className="text-[#FFC23C] hover:underline inline-flex items-center gap-1"
             >
               contact us <MessageCircle size={16} />
