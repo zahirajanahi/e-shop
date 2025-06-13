@@ -36,7 +36,7 @@ const FaqPage = () => {
   const [openIndex, setOpenIndex] = useState(null);
   
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/0661715003', '_blank');
+    window.open('https://wa.me/0661553462', '_blank');
   };
 
   return (
