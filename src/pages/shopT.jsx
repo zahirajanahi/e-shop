@@ -71,10 +71,10 @@ export const ShopT = () => {
     }
   };
 
-    const handleWhatsAppClick = () => {
-    window.open('https://wa.me/0661715003', '_blank');
-  };
-
+   const handleWhatsAppClick = () => {
+       window.open('https://wa.me/212661715003', '_blank');
+     };
+     
   // Add filter handlers
   const handleFilterChange = (title, value) => {
     setFilters(prev => ({

@@ -31,8 +31,9 @@ const Landing = () => {
     };
 
       const handleWhatsAppClick = () => {
-       window.open('https://wa.me/0661715003', '_blank');
+       window.open('https://wa.me/212661715003', '_blank');
      };
+     
 
     const fadeInUp = {
         initial: { opacity: 0, y: 60 },

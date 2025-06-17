@@ -25,11 +25,11 @@ const ProductCard = ({ product, onAddToCart }) => {
         whileHover="hover"
         className="bg-zinc-800 rounded-xl overflow-hidden shadow-lg group relative"
       >
-        <div className="relative overflow-hidden h-80">
+        <div className="relative overflow-hidden h-[46vh] sm:h-96">
           <ImageCarousel
             images={product.images || []}
             alt={product.title}
-            className="w-full h-full"
+            className="sm:w-[15vw] sm:h-[40vh] h-full w-full"
             showThumbnails={false}
           />
           
@@ -51,7 +51,7 @@ const ProductCard = ({ product, onAddToCart }) => {
           </motion.div>
         </div>
 
-        <div className="p-6">
+        <div className="p-4">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

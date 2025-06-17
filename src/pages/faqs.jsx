@@ -35,9 +35,9 @@ const faqs  = [
 const FaqPage = () => {
   const [openIndex, setOpenIndex] = useState(null);
   
-  const handleWhatsAppClick = () => {
-    window.open('https://wa.me/0661715003', '_blank');
-  };
+   const handleWhatsAppClick = () => {
+       window.open('https://wa.me/212661715003', '_blank');
+     };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-zinc-900">
