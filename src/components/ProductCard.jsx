@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ShoppingCart } from 'lucide-react';
-import ProductDetailModal from './ProductDetailModal';
+import ProductDetailModal from '../components/ProductDetailModal';
+import ImageCarousel from '../components/ImageCarousel';
+
 const ProductCard = ({ product, onAddToCart }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     show: { 
@@ -14,6 +17,7 @@ const ProductCard = ({ product, onAddToCart }) => {
       }
     }
   };
+
   return (
     <>
       <motion.div
@@ -21,15 +25,15 @@ const ProductCard = ({ product, onAddToCart }) => {
         whileHover="hover"
         className="bg-zinc-800 rounded-xl overflow-hidden shadow-lg group relative"
       >
-        <div className="relative overflow-hidden">
-          <motion.img
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.3 }}
-            src={product.image_url}
-            alt={product.name}
-            className="w-full h-64 object-cover"
+        <div className="relative overflow-hidden h-80">
+          <ImageCarousel
+            images={product.images || []}
+            alt={product.title}
+            className="w-full h-full"
+            showThumbnails={false}
           />
-          {/* Button for larger screens (visible on hover) */}
+          
+          {/* Hover overlay for larger screens */}
           <motion.div
             initial={{ opacity: 0 }}
             whileHover={{ opacity: 1 }}
@@ -46,7 +50,7 @@ const ProductCard = ({ product, onAddToCart }) => {
             </motion.button>
           </motion.div>
         </div>
-        {/* Always visible button on mobile */}
+
         <div className="p-6">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -54,7 +58,7 @@ const ProductCard = ({ product, onAddToCart }) => {
             transition={{ delay: 0.2 }}
           >
             <h3 className="text-xl font-semibold text-white mb-2">{product.title}</h3>
-            <p className="text-gray-400 text-[15px] mb-4">{product.description}</p>
+            <p className="text-gray-400 text-[15px] mb-4 line-clamp-2">{product.description}</p>
             <div className="flex items-center justify-between">
               <span className="text-xl font-bold text-[#FFC23C]">
                 {product.price} MAD
@@ -63,11 +67,12 @@ const ProductCard = ({ product, onAddToCart }) => {
                 onClick={() => setIsModalOpen(true)}
                 className="text-sm text-gray-400 hover:text-white transition-colors"
               >
-                Product Details
+                View Details
               </button>
             </div>
           </motion.div>
-          {/* Mobile Add to Cart Button (always visible) */}
+          
+          {/* Mobile Add to Cart Button */}
           <button
             onClick={() => onAddToCart(product)}
             className="lg:hidden mt-4 w-full bg-[#FFC23C] text-black px-6 py-3 rounded-full font-semibold flex items-center justify-center gap-2"
@@ -77,6 +82,7 @@ const ProductCard = ({ product, onAddToCart }) => {
           </button>
         </div>
       </motion.div>
+
       <ProductDetailModal
         product={product}
         isOpen={isModalOpen}
@@ -86,4 +92,5 @@ const ProductCard = ({ product, onAddToCart }) => {
     </>
   );
 };
+
 export default ProductCard;

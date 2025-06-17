@@ -74,8 +74,8 @@ export const Shop = () => {
   };
 
 
-  const handleWhatsAppClick = () => {
-    window.open('https://wa.me/0661553462', '_blank');
+    const handleWhatsAppClick = () => {
+    window.open('https://wa.me/0661715003', '_blank');
   };
 
   // Add filter handlers
@@ -105,11 +105,11 @@ export const Shop = () => {
     // Price range filter
     let matchesPrice = true;
     if (filters.priceRange === 'under100') {
-      matchesPrice = product.price < 100;
+      matchesPrice = product.price < 1000;
     } else if (filters.priceRange === '100to500') {
-      matchesPrice = product.price >= 100 && product.price <= 500;
+      matchesPrice = product.price >= 1000 && product.price <= 1500;
     } else if (filters.priceRange === 'over500') {
-      matchesPrice = product.price > 500;
+      matchesPrice = product.price > 1500;
     }
 
     // Category filter
@@ -278,9 +278,9 @@ export const Shop = () => {
                     className="w-full bg-zinc-700 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFC23C]"
                   >
                     <option value="all">All Prices</option>
-                    <option value="under100">Under $100</option>
-                    <option value="100to500">$100 - $500</option>
-                    <option value="over500">Over $500</option>
+                    <option value="under100">Under 1000 dh</option>
+                    <option value="100to500">1000 - 1500</option>
+                    <option value="over500">Over 1500</option>
                   </select>
                 </div>
 

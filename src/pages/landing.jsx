@@ -30,9 +30,9 @@ const Landing = () => {
         navigate('/shop');
     };
 
-    const handleWhatsAppClick = () => {
-        window.open('https://wa.me/0661553462', '_blank');
-    };
+      const handleWhatsAppClick = () => {
+       window.open('https://wa.me/0661715003', '_blank');
+     };
 
     const fadeInUp = {
         initial: { opacity: 0, y: 60 },
@@ -151,9 +151,9 @@ const Landing = () => {
                         initial={{ x: -100, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.5, duration: 0.6 }}
-                        className="absolute left-4 md:left-16 bottom-16 text-white max-w-md px-4 md:px-0"
+                        className="absolute left-5 md:left-16 bottom-52 text-white max-w-md px-4 md:px-0"
                     >
-                        <p className="text-zinc-400 pb-4 text-sm md:text-base">
+                        <p className="text-zinc-400 pb-4 text-sm md:text-lg">
                           Authentic KAWS collectibles, streetwear, and accessories. Don't miss out, shop before they sell out.
                         </p>
                         <motion.button
