@@ -37,7 +37,7 @@ const ProductDetailModal = ({ product, isOpen, onClose, onAddToCart }) => {
               <ImageCarousel
                 images={product.images || []}
                 alt={product.title}
-                className="w-full h-full object-contain p-4"
+                className="w-full h-full object-cantain "
                 showThumbnails={true}
                 imageClassName="object-contain max-h-[400px]"
               />
