@@ -25,7 +25,7 @@ const ProductCard = ({ product, onAddToCart }) => {
         whileHover="hover"
         className="bg-zinc-800 rounded-xl overflow-hidden shadow-lg group relative"
       >
-        <div className="relative overflow-hidden h-64  ">
+        <div className="relative overflow-hidden h-64.5  ">
           <ImageCarousel
             images={product.images || []}
             alt={product.title}
