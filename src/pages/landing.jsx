@@ -152,7 +152,7 @@ const Landing = () => {
                         initial={{ x: -100, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.5, duration: 0.6 }}
-                        className="absolute left-4 md:left-16 bottom-20 text-white max-w-md px-4 md:px-0"
+                        className="absolute left-4 md:left-16 bottom-10 text-white max-w-md px-4 md:px-0"
                     >
                         <p className="text-zinc-400 pb-4 text-sm md:text-base">
                           Authentic KAWS collectibles, streetwear, and accessories. Don't miss out, shop before they sell out . 
