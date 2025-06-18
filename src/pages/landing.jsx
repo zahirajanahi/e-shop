@@ -6,7 +6,7 @@ import { ArrowDownRight, ArrowUpRight, MessageCircle } from 'lucide-react';
 import Footer from '../components/footer';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { LiaWhatsapp } from 'react-icons/lia';
-import CustomCursor from '../components/CustomCursor';
+
 import { Youtube } from 'react-feather';
 import { Helmet } from "react-helmet";
 
@@ -61,7 +61,7 @@ const Landing = () => {
 
     return (
         <>
-             <CustomCursor/>
+          
 
              <Helmet>
                 <link rel="icon" type="image/png" href={Images.logo} sizes="280x280" />
@@ -151,7 +151,7 @@ const Landing = () => {
                         initial={{ x: -100, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.5, duration: 0.6 }}
-                        className="absolute left-4 md:left-16 bottom-10 text-white max-w-md px-4 md:px-0"
+                        className="absolute left-4 md:left-16 bottom-20 text-white max-w-md px-4 md:px-0"
                     >
                         <p className="text-zinc-400 pb-4 text-sm md:text-base">
                           Authentic KAWS collectibles, streetwear, and accessories. Don't miss out, shop before they sell out. 

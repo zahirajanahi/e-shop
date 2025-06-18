@@ -9,7 +9,7 @@ import Footer from '../components/footer';
 import { MessageCircle, Search, SlidersHorizontal, X } from 'lucide-react';
 import { Images } from "../constant";
 import { LiaWhatsapp } from "react-icons/lia";
-import CustomCursor from '../components/CustomCursor';
+
 import Swal from 'sweetalert2';
 
 
@@ -130,7 +130,7 @@ export const Shop = () => {
 
   return (
     <>
-      <CustomCursor/>
+     
 
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end">
         <motion.div

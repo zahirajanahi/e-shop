@@ -9,7 +9,7 @@ import Footer from '../components/footer';
 import { MessageCircle, Search, SlidersHorizontal, X } from 'lucide-react';
 import { Images } from "../constant";
 import { LiaWhatsapp } from "react-icons/lia";
-import CustomCursor from '../components/CustomCursor';
+
 import Swal from 'sweetalert2';
 
 
@@ -74,7 +74,7 @@ export const ShopT = () => {
    const handleWhatsAppClick = () => {
        window.open('https://wa.me/212661715003', '_blank');
      };
-     
+
   // Add filter handlers
   const handleFilterChange = (title, value) => {
     setFilters(prev => ({
@@ -127,8 +127,7 @@ export const ShopT = () => {
 
   return (
     <>
-      <CustomCursor/>
-
+  
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
