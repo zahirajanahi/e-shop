@@ -6,8 +6,6 @@ import { ArrowDownRight, ArrowUpRight, MessageCircle } from 'lucide-react';
 import Footer from '../components/footer';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { LiaWhatsapp } from 'react-icons/lia';
-
-import { Youtube } from 'react-feather';
 import { Helmet } from "react-helmet";
 
 
@@ -154,7 +152,7 @@ const Landing = () => {
                         className="absolute left-4 md:left-16 bottom-20 text-white max-w-md px-4 md:px-0"
                     >
                         <p className="text-zinc-400 pb-4 text-sm md:text-base">
-                          Authentic KAWS collectibles, streetwear, and accessories. Don't miss out, shop before they sell out. 
+                          Authentic KAWS collectibles, streetwear, and accessories. Don't miss out, shop before they sell out . 
                         </p>
                         <motion.button
                             whileHover={{ scale: 1.05, backgroundColor: "#fff", color: "#000" }}
