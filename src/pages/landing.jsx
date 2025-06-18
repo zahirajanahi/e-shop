@@ -33,7 +33,6 @@ const Landing = () => {
       const handleWhatsAppClick = () => {
        window.open('https://wa.me/212661715003', '_blank');
      };
-     
 
     const fadeInUp = {
         initial: { opacity: 0, y: 60 },
@@ -148,26 +147,24 @@ const Landing = () => {
                             className='h-full object-cover w-full'
                         />
                     </picture>
-                  <motion.div
-    initial={{ x: -100, opacity: 0 }}
-    animate={{ x: 0, opacity: 1 }}
-    transition={{ delay: 0.5, duration: 0.6 }}
-    className="absolute left-4 md:left-16 bottom-16 text-white w-full max-w-md px-4 md:px-0"
->
-    <div className="text-left space-y-4"> {/* Added space-y-4 for consistent spacing */}
-        <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
-            Authentic KAWS collectibles, streetwear, and accessories. Don't miss out, shop before they sell out.
-        </p>
-        
-        <motion.button
-            whileHover={{ scale: 1.05, backgroundColor: "#fff", color: "#000" }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-transparent border border-white rounded-3xl text-white px-6 py-3 text-base"
-        >
-            Shop Now
-        </motion.button>
-    </div>
-</motion.div>
+                    <motion.div
+                        initial={{ x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 0.6 }}
+                        className="absolute left-4 md:left-16 bottom-16 text-white max-w-md px-4 md:px-0"
+                    >
+                        <p className="text-zinc-400 pb-4 text-sm md:text-base">
+                          Authentic KAWS collectibles, streetwear, and accessories. Don't miss out, shop before they sell out.
+                        </p>
+                        <motion.button
+                            whileHover={{ scale: 1.05, backgroundColor: "#fff", color: "#000" }}
+                            whileTap={{ scale: 0.95 }}
+                            className="bg-transparent border border-white rounded-3xl text-white px-4 md:px-6 py-2 md:py-3 text-sm md:text-base"
+                            onClick={handleClick}
+                        >
+                            Shop Now
+                        </motion.button>
+                    </motion.div>
                 </div>
             </div>
 
