@@ -65,7 +65,7 @@ const Landing = () => {
                 <link rel="icon" type="image/png" href={Images.logo} sizes="280x280" />
             </Helmet>
 
-            <div className="fixed bottom-8 right-20 z-50 flex flex-col items-end">
+            <div className="fixed bottom-8 right-10 z-50 flex flex-col items-end">
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{
