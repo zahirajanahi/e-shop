@@ -154,7 +154,8 @@ const Landing = () => {
                         className="absolute left-4 md:left-16 bottom-16 text-white max-w-md px-4 md:px-0"
                     >
                         <p className="text-zinc-400 pb-4 text-sm md:text-base">
-                          Authentic KAWS collectibles, streetwear, and accessories. Don't miss out, shop before they sell out.
+                          Authentic KAWS collectibles, streetwear, and accessories. Don't miss out, shop before they sell out. 
+                        </p>
                         <motion.button
                             whileHover={{ scale: 1.05, backgroundColor: "#fff", color: "#000" }}
                             whileTap={{ scale: 0.95 }}
