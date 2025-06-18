@@ -67,7 +67,7 @@ const Landing = () => {
                 <link rel="icon" type="image/png" href={Images.logo} sizes="280x280" />
             </Helmet>
 
-            <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end">
+            <div className="fixed bottom-8 right-20 z-50 flex flex-col items-end">
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{
@@ -151,7 +151,7 @@ const Landing = () => {
                         initial={{ x: -100, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.5, duration: 0.6 }}
-                        className="absolute left-4 md:left-16 bottom-16 text-white max-w-md px-4 md:px-0"
+                        className="absolute left-4 md:left-16 bottom-10 text-white max-w-md px-4 md:px-0"
                     >
                         <p className="text-zinc-400 pb-4 text-sm md:text-base">
                           Authentic KAWS collectibles, streetwear, and accessories. Don't miss out, shop before they sell out. 
@@ -235,14 +235,14 @@ const Landing = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 src={Images.grid4} 
-                className='w-[5w] h-[80vh]' 
+                className='w-[3w] h-[75vh]' 
                 alt="" 
             />
             <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 src={Images.grid2} 
-                className='w-[5w] h-[80vh]' 
+                className='w-[3w] h-[75vh]' 
                 alt="" 
             />
         </motion.div>
@@ -258,14 +258,14 @@ const Landing = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 src={Images.grid3} 
-                className='w-[6w] h-[80vh]' 
+                className='w-[3w] h-[75vh]' 
                 alt="" 
             />
             <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 src={Images.grid} 
-                className='w-[6w] h-[80vh]' 
+                className='w-[3w] h-[75vh]' 
                 alt="" 
             />
         </motion.div>
