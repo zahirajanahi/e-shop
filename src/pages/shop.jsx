@@ -9,7 +9,6 @@ import Footer from '../components/footer';
 import { MessageCircle, Search, SlidersHorizontal, X } from 'lucide-react';
 import { Images } from "../constant";
 import { LiaWhatsapp } from "react-icons/lia";
-
 import Swal from 'sweetalert2';
 
 

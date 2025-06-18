@@ -102,11 +102,11 @@ export const ShopT = () => {
     // Price range filter
     let matchesPrice = true;
     if (filters.priceRange === 'under100') {
-      matchesPrice = product.price < 100;
+      matchesPrice = product.price < 1000;
     } else if (filters.priceRange === '100to500') {
-      matchesPrice = product.price >= 100 && product.price <= 500;
+      matchesPrice = product.price >= 1000 && product.price <= 1500;
     } else if (filters.priceRange === 'over500') {
-      matchesPrice = product.price > 500;
+      matchesPrice = product.price > 1500;
     }
 
     // Category filter
@@ -128,7 +128,7 @@ export const ShopT = () => {
   return (
     <>
   
-      <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end">
+      <div className="fixed bottom-8 right-10 z-50 flex flex-col items-end">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ 
@@ -274,9 +274,9 @@ export const ShopT = () => {
                     className="w-full bg-zinc-700 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFC23C]"
                   >
                     <option value="all">All Prices</option>
-                    <option value="under100">Under $100</option>
-                    <option value="100to500">$100 - $500</option>
-                    <option value="over500">Over $500</option>
+                    <option value="under100">Under 1000</option>
+                    <option value="100to500">1000 - 1500</option>
+                    <option value="over500">Over 1500</option>
                   </select>
                 </div>
 

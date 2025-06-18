@@ -126,6 +126,9 @@ const Landing = () => {
                         Chat with us
                     </motion.span>
                 </motion.button>
+
+                
+                
             </div>
 
             <div className='bg-[#000]'>
@@ -233,14 +236,14 @@ const Landing = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 src={Images.grid4} 
-                className='w-[3w] h-[75vh]' 
+                className='w-[4w] h-[75vh]' 
                 alt="" 
             />
             <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 src={Images.grid2} 
-                className='w-[3w] h-[75vh]' 
+                className='w-[4w] h-[75vh]' 
                 alt="" 
             />
         </motion.div>
@@ -256,14 +259,14 @@ const Landing = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 src={Images.grid3} 
-                className='w-[3w] h-[75vh]' 
+                className='w-[4w] h-[75vh]' 
                 alt="" 
             />
             <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 src={Images.grid} 
-                className='w-[3w] h-[75vh]' 
+                className='w-[4w] h-[75vh]' 
                 alt="" 
             />
         </motion.div>
