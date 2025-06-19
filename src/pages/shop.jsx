@@ -10,6 +10,8 @@ import { MessageCircle, Search, SlidersHorizontal, X } from 'lucide-react';
 import { Images } from "../constant";
 import { LiaWhatsapp } from "react-icons/lia";
 import Swal from 'sweetalert2';
+import BearbrickSuggestionSection from '../components/BearbrickSuggestionSection';
+
 
 
 
@@ -326,6 +328,9 @@ export const Shop = () => {
               />
             ))}
           </div>
+
+           {/* Bearbrick Suggestion Section */}
+          <BearbrickSuggestionSection />
 
           {/* No Results Message */}
           {filteredProducts.length === 0 && (

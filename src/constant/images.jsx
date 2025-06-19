@@ -1,5 +1,6 @@
 
 export default {
+    bear:require('../assets/img/upscalemedia-transformed (1).jpeg'),
     logo :  require('../assets/img/logo (2).png'),
     error:require('../assets/img/error.png'),
     landing:require('../assets/img/HeroSectionImg.png'),
